@@ -1,6 +1,5 @@
 # SimpleChatBetweenTwoClients
-A Simple chat between two users using TCP communication. Made in Python. 
-
-Open the server with "s" and then, on two different command prompts, run the client with "c"
-When prompted to put your IP you may put "1" to use your own machine.
-Quitting the communication doesn't work yet.
+Um chat simples entre dois clientes usando comunicação TCP. Feito com Python
+Abra o servidor com modo "s" e então abra dois command promts diferentes e os rode com o modo cliente "c".
+Quando solicitado por um IP você pode colocer 1 para usar o IP local da sua máquina.
+O "Quit" não funciona ainda.
