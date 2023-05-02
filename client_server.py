@@ -22,7 +22,7 @@ def start_chat_server(): #Função do server
     server_socket = socket(AF_INET, SOCK_STREAM) #Cria um socket TCP (SOCK_STREAM) com comunicação IP/V4 (AF_INET)
     server_socket.bind(('localhost', 12000)) #Acossia o IP do server ao IP da máquina atual (localhost) e ao port 12000
     server_socket.listen() #Começa a ouvir por qualquer pedido de conexão
-
+    client1_address, client1_address = 0
     #Começa o loop do servidor
     while True:
         #Espera os dois clientes conectarem
