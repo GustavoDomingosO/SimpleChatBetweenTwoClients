@@ -25,6 +25,7 @@ class CHAT:
         self.root.title('Chatroom')
         self.root.resizable(False, False)
         self.root.configure(background='white')
+        self.root.iconbitmap('GIT\SimpleChatBetweenTwoClients\ICO.ico')
         
         self.container = tk.Frame(self.root)
         self.container.columnconfigure(0, weight= 1)
@@ -130,6 +131,7 @@ def redirect():
     CHAT(address)
 
 menu = tk.Tk()
+menu.iconbitmap('GIT\SimpleChatBetweenTwoClients\ICO.ico')
 menu.geometry('400x400')
 menu.title('MENU')
 menu.resizable(False, False)
