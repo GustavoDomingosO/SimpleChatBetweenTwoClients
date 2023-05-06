@@ -32,7 +32,7 @@ def start_chat_client():
             client_state[0] = False
             break
         
-        else: client_socket.send(message.encode())
+        else: client_socket.sendall(message.encode())
 
     client_socket.send("Quitting".encode())
     receive_thread.join()

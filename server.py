@@ -9,7 +9,7 @@ def handle_client(client_socket, client_address, other_client_socket):
             break
         else:
             print(f'{client_address}: {data.decode()}')
-            other_client_socket.send(data)
+            other_client_socket.sendall(data)
     print(f'Closing connection with {client_address}')  
 
 def start_chat_server(): 
@@ -41,8 +41,8 @@ def start_chat_server():
         data1 = client1_socket.recv(1024)
         data2 = client2_socket.recv(1024)
         if (data1.decode() == "ThreadFinished" and data2.decode() == "ThreadFinished"):
-            client1_socket.sendall("FinishedServer".encode())
-            client2_socket.sendall("FinishedServer".encode())
+            client1_socket.send("FinishedServer".encode())
+            client2_socket.send("FinishedServer".encode())
             break
     client1_socket.shutdown(SHUT_WR)
     client2_socket.shutdown(SHUT_WR)
