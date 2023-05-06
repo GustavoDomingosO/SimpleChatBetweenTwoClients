@@ -1,34 +1,16 @@
 from socket import *    
 import threading        
 
-"""
-O problema parece ser q as threads continuam rodando mesmo depois q eu peço pra fechar elas.
-Por enquanto eu n vejo solução. Also mudei uma pa de coisa no codigo. Ta quase funcionando provavelmente.
-Precisa fechar os soquetes em ambos os lados. Cliente e servidor, se pa é a falta de sincronia calsada pelas threads q ta ferrando tudo
-Talvez eu possa mudar o client_state pra false e dps rodar um join() pra q a thread finalize antes de fechar os sockets
-"""
-
 def handle_client(client_socket, client_address, other_client_socket):  
     while True:     
-        try: 
-            data = client_socket.recv(1024)
-            if (data.decode() == "Quitting"):
-                other_client_socket.send("Quitting".encode()) #Manda pro outro cliente q vamos quitar
-                break
-            if not data:
-                print("Client exited gracefully")
-                break #Não chega aqui
+        data = client_socket.recv(1024)
+        if (data.decode() == "Quitting"):
+            other_client_socket.send("Quitting".encode()) #Manda pro outro cliente q vamos quitar
+            break
+        else:
             print(f'{client_address}: {data.decode()}')
             other_client_socket.send(data)
-        except ConnectionResetError:
-            print("Client closed the connection")
-            break #Nem aqui
-    
     print(f'Closing connection with {client_address}')  
-    '''
-    other_client_socket.shutdown(SHUT_WR)
-    other_client_socket.close()
-    '''
 
 def start_chat_server(): 
 
@@ -38,7 +20,6 @@ def start_chat_server():
 
     client1_address = None
     client2_address = None
-    Quitting = False
     print('Waiting for two clients to connect...')
     while True:
         
@@ -70,15 +51,13 @@ def start_chat_server():
 
 def receive_messages(client_socket, client_state):
     while client_state[0] == True: 
-
         data = client_socket.recv(1024)
         if (data.decode() == "Quitting" and  client_state[0] == True):
             client_state[0] = False
             break
         else:
-            if not data:
-                break
-            print("Them: ", data.decode())
+            if data.decode() == "Quitting": pass
+            else: print("Them: ", data.decode())
 
 
 def start_chat_client():
@@ -127,6 +106,3 @@ elif mode == 'c':
     start_chat_client()
 else:
     print('Invalid mode selected')
-
-
-
