@@ -11,8 +11,6 @@ Requisitos:
 
         Verifique se o Tkinter foi instalado corretamente. Para fazer isso, abra o prompt de comando ou o terminal e digite "python" para iniciar o interpretador do Python. Em seguida, digite "import tkinter" e pressione Enter. Se não houver erros, o Tkinter foi instalado corretamente.
 
-    O Arquivo 'ICO.ico' deve estar localizado na mesma pasta do client_GUI.py.
-
 Execução:
 
 Para inciar um chat, é necessário executar dois outros command prompts diferentes com o comando "python client_GUI.py". Quando executado o "client_GUI.py" um prompt será aberto pedindo o IP ou hostname do servidor. Caso o input esteja vazio, será utilizado o "localhost".

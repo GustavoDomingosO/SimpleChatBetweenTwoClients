@@ -5,13 +5,10 @@ import threading
 
 #   GUI - START
 
-
-path = 'ICO.ico'
-ui_gold = '#f39c12'
+ui_blue = '#3498db'
 ui_red = '#db2149'
 ui_silver = '#cccccc'
-ui_yellow = '#f39c12'
-
+ui_darkblue = '#2980b9'
 quit_code = '01000110'
 
 class CHAT:
@@ -35,7 +32,6 @@ class CHAT:
         self.root.title('Chatroom')
         self.root.resizable(False, False)
         self.root.configure(background='white')
-        self.root.iconbitmap(path)
         
         self.container = tk.Frame(self.root)
         self.container.columnconfigure(0, weight= 1)
@@ -65,9 +61,9 @@ class CHAT:
         
         #       Header and input here.
         
-        header = tk.Frame(self.container, bg= ui_gold, height= 30, highlightthickness= 0, borderwidth= 0)
+        header = tk.Frame(self.container, bg= ui_blue, height= 30, highlightthickness= 0, borderwidth= 0)
         
-        addr_label = tk.Label(header, bg= ui_gold, fg='white', text=f'Connected to {address}', font=('Arial', 10, 'bold'), height= 2)
+        addr_label = tk.Label(header, bg= ui_blue, fg='white', text=f'Connected to {address}', font=('Arial', 10, 'bold'), height= 2)
         addr_label.pack(side= 'left', padx= 15)
         
         quit_button = tk.Button(header, bg= ui_red, fg= 'white', font=('Arial', 9), text= 'DISCONNECT', relief= 'flat', command=self.terminate)
@@ -78,7 +74,7 @@ class CHAT:
         self.inputEntry = tk.Text(inputFrame, font=('Arial',11),height=  2, width= 35, relief= 'flat', borderwidth= 0)
         self.inputEntry.pack(side= 'left', padx= (5,2), pady= 10)
         
-        send = tk.Button(inputFrame, bg= ui_gold, fg='white', font=('Arial', 9), text='SEND', relief= 'flat', borderwidth= 0, activebackground='#d35400', activeforeground= 'white', command=self.send_message)
+        send = tk.Button(inputFrame, bg= ui_blue, fg='white', font=('Arial', 9), text='SEND', relief= 'flat', borderwidth= 0, activebackground='#16a085', activeforeground= 'white', command=self.send_message)
         send.pack(fill= 'both', expand= True, pady= 10, padx= (3,5))
         
         header.grid(row=0,column=0,sticky='new')
@@ -96,17 +92,16 @@ class CHAT:
         bubble.pack(side='top', padx=10, pady=5, anchor='se', ipadx= 8, ipady= 4)
         
     def in_bubble(self, message):
-        bubble = tk.Label(self.chat, bg= ui_gold, fg= 'white', text=message, font=('Arial', 11))
+        bubble = tk.Label(self.chat, bg= ui_blue, fg= 'white', text=message, font=('Arial', 11))
         bubble.pack(side='top', padx=8, pady=4, anchor='sw', ipadx= 8, ipady= 4)
         
     def warn(self):
         self.warning = tk.Tk()
         self.warning.title("Disconnect Request")
         self.warning.attributes('-topmost', True)
-        self.warning.iconbitmap(path)    
         self.warning.configure(background='white')
         label = tk.Label(self.warning, bg='white', text="Your peer has requested to disconnect.\nPress OK to confirm.")
-        button = tk.Button(self.warning, bg= ui_gold, fg='white', font=('Arial', 10), text='OK', relief= 'flat', borderwidth= 0, activebackground='#d35400', activeforeground= 'white', command=self.redirect_terminate)
+        button = tk.Button(self.warning, bg= ui_blue, fg='white', font=('Arial', 10), text='OK', relief= 'flat', borderwidth= 0, activebackground='#d35400', activeforeground= 'white', command=self.redirect_terminate)
         label.pack(padx=10, pady=10)
         button.pack(pady=10, ipadx= 15, ipady= 5, expand= True)
         self.warning.mainloop()
@@ -178,7 +173,6 @@ def redirect():
     CHAT(address)
 
 menu = tk.Tk()
-menu.iconbitmap(path)
 menu.geometry('400x400')
 menu.title('MENU')
 menu.resizable(False, False)
@@ -193,7 +187,7 @@ label2.pack()
 inputfield = tk.Entry(container, font=('Arial', 11), bg= 'white', border= 1, relief= 'solid', justify= 'center')
 inputfield.pack(pady= 15, ipadx=5, ipady=5)
         
-confirm = tk.Button(container, bg= ui_gold, fg='white', font=('Arial', 11), text='CONNECT', relief= 'flat', borderwidth= 0, activebackground='#d35400', activeforeground= 'white', command=redirect)
+confirm = tk.Button(container, bg= ui_blue, fg='white', font=('Arial', 11), text='CONNECT', relief= 'flat', borderwidth= 0, activebackground='#16a085', activeforeground= 'white', command=redirect)
 confirm.pack(ipadx=10, ipady=5, pady=10)
         
 container.pack(pady=100)
