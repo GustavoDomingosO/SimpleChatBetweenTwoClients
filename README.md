@@ -1,6 +1,4 @@
 # SimpleChatBetweenTwoClients
-Um chat simples entre dois clientes usando comunicação TCP. Feito com Python.
-
 Requisitos:
 
     Instalação da biblioteca Tkinter (interface gráfica):
@@ -13,9 +11,8 @@ Requisitos:
 
         Verifique se o Tkinter foi instalado corretamente. Para fazer isso, abra o prompt de comando ou o terminal e digite "python" para iniciar o interpretador do Python. Em seguida, digite "import tkinter" e pressione Enter. Se não houver erros, o Tkinter foi instalado corretamente.
 
-
 Execução:
 
-    Executar o arquivo server.py
+Para inciar um chat, é necessário executar dois outros command prompts diferentes com o comando "python client_GUI.py". Quando executado o "client_GUI.py" um pronmt será aberto pedindo o IP ou hostname do servidor. Caso o input esteja vazio será utilizado o "localhost".
 
-    Executar suas instâncias do client_GUI.py
+Após ambos os clientes se conectarem ao servidor será possível iniciar uma conversa entre eles. Para sair, basta clicar no botão "Quit".
