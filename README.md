@@ -15,6 +15,6 @@ Requisitos:
 
 Execução:
 
-Para inciar um chat, é necessário executar dois outros command prompts diferentes com o comando "python client_GUI.py". Quando executado o "client_GUI.py" um pronmt será aberto pedindo o IP ou hostname do servidor. Caso o input esteja vazio será utilizado o "localhost".
+Para inciar um chat, é necessário executar dois outros command prompts diferentes com o comando "python client_GUI.py". Quando executado o "client_GUI.py" um prompt será aberto pedindo o IP ou hostname do servidor. Caso o input esteja vazio será utilizado o "localhost".
 
 Após ambos os clientes se conectarem ao servidor será possível iniciar uma conversa entre eles. Para sair, basta clicar no botão "Quit".
