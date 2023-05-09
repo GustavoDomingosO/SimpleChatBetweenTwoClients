@@ -1,6 +1,8 @@
 from socket import *    
 import threading        
 
+quit_code = '01000110'
+
 def handle_client(client_socket, client_address, other_client_socket):  
     while True:     
         data = client_socket.recv(1024)
@@ -52,11 +54,11 @@ def start_chat_server():
 def receive_messages(client_socket, client_state):
     while client_state[0] == True: 
         data = client_socket.recv(1024)
-        if (data.decode() == "Quitting" and  client_state[0] == True):
+        if (data.decode() == quit_code and client_state[0] == True):
             client_state[0] = False
             break
         else:
-            if data.decode() == "Quitting": pass
+            if data.decode() == quit_code: pass
             else: print("Them: ", data.decode())
 
 

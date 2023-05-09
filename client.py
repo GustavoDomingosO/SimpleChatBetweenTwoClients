@@ -1,14 +1,16 @@
 from socket import *    
 import threading 
 
+quit_code = '01000110'
+
 def receive_messages(client_socket, client_state):
     while client_state[0] == True: 
         data = client_socket.recv(1024)
-        if (data.decode() == "Quitting" and  client_state[0] == True):
+        if (data.decode() == quit_code and  client_state[0] == True):
             client_state[0] = False
             break
         else:
-            if data.decode() == "Quitting": pass
+            if data.decode() == quit_code: pass
             else: print("Them: ", data.decode())
 
 def start_chat_client():
@@ -32,9 +34,9 @@ def start_chat_client():
             client_state[0] = False
             break
         
-        else: client_socket.sendall(message.encode())
+        else: client_socket.sendall(message.encode())   
 
-    client_socket.send("Quitting".encode())
+    client_socket.send(quit_code.encode())
     receive_thread.join()
 
     while True:

@@ -1,11 +1,13 @@
 from socket import *    
 import threading        
 
+quit_code = '01000110'
+
 def handle_client(client_socket, client_address, other_client_socket):  
     while True:     
         data = client_socket.recv(1024)
-        if (data.decode() == "Quitting"):
-            other_client_socket.send("Quitting".encode()) #Manda pro outro cliente q vamos quitar
+        if (data.decode() == quit_code):
+            other_client_socket.send(quit_code.encode()) #Manda pro outro cliente q vamos quitar
             break
         else:
             print(f'{client_address}: {data.decode()}')
